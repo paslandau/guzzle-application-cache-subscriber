@@ -239,4 +239,4 @@ foreach ($requests as $i => $request) {
 
 ##Frequently searched questions
 
-- How can I cache Guzzle requests/responses
+- How can I cache Guzzle requests/responses?

@@ -1,6 +1,7 @@
 <?php
 
 namespace paslandau\GuzzleApplicationCacheSubscriber;
+
 use Doctrine\Common\Cache\Cache;
 use GuzzleHttp\Message\MessageInterface;
 use GuzzleHttp\Message\Request;
@@ -12,9 +13,9 @@ use GuzzleHttp\Stream\Utils;
 
 
 /**
-     * Default cache storage implementation.
-     * @see https://github.com/guzzle/cache-subscriber/blob/0.1.0/src/CacheStorage.php
-     */
+ * Default cache storage implementation.
+ * @see https://github.com/guzzle/cache-subscriber/blob/0.1.0/src/CacheStorage.php
+ */
 class CacheStorage
 {
     /** @var string */
@@ -24,7 +25,7 @@ class CacheStorage
     private $cache;
 
     /**
-     * @param Cache  $cache     Cache backend.
+     * @param Cache $cache Cache backend.
      * @param string $keyPrefix Key prefix to add to each key.
      */
     public function __construct(Cache $cache, $keyPrefix = null)
@@ -36,7 +37,8 @@ class CacheStorage
     public function cache(
         RequestInterface $request,
         ResponseInterface $response
-    ) {
+    )
+    {
         $ctime = time();
         $key = $this->getCacheKey($request);
         $headers = $this->getHeaders($request);
@@ -47,7 +49,7 @@ class CacheStorage
         if ($response->getBody() && $response->getBody()->getSize() > 0) {
             $body = $response->getBody();
             $bodyDigest = $this->getBodyKey($request->getUrl(), $body);
-            $this->cache->save($bodyDigest, (string) $body);
+            $this->cache->save($bodyDigest, (string)$body);
         }
 
         array_unshift($entries, [
@@ -113,16 +115,16 @@ class CacheStorage
         }
 
         // Ensure that the response is not expired
-            $response = new Response($match[2], $match[1]);
-            if ($match[3]) {
-                if ($body = $this->cache->fetch($match[3])) {
-                    $response->setBody(Utils::create($body));
-                } else {
-                    // The response is not valid because the body was somehow
-                    // deleted
-                    $response = -1;
-                }
+        $response = new Response($match[2], $match[1]);
+        if ($match[3]) {
+            if ($body = $this->cache->fetch($match[3])) {
+                $response->setBody(Utils::create($body));
+            } else {
+                // The response is not valid because the body was somehow
+                // deleted
+                $response = -1;
             }
+        }
 
         if ($response === -1) {
             // Remove the entry from the metadata and update the cache
@@ -154,7 +156,7 @@ class CacheStorage
     /**
      * Create a cache key for a response's body
      *
-     * @param string          $url  URL of the entry
+     * @param string $url URL of the entry
      * @param StreamInterface $body Response body
      *
      * @return string
@@ -168,8 +170,8 @@ class CacheStorage
      * Determines whether two Request HTTP header sets are non-varying
      *
      * @param string $vary Response vary header
-     * @param array  $r1   HTTP header array
-     * @param array  $r2   HTTP header array
+     * @param array $r1 HTTP header array
+     * @param array $r2 HTTP header array
      *
      * @return bool
      */
@@ -215,7 +217,8 @@ class CacheStorage
         $currentTime,
         ResponseInterface $response,
         $persistedRequest
-    ) {
+    )
+    {
         $entries = [];
         $manifest = $this->cache->fetch($key);
 

@@ -1,7 +1,6 @@
 <?php
 namespace paslandau\GuzzleApplicationCacheSubscriber;
 
-use Doctrine\Common\Cache\Cache;
 use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Event\EndEvent;
 use GuzzleHttp\Event\RequestEvents;
@@ -70,7 +69,7 @@ class ApplicationCacheSubscriber implements SubscriberInterface
         if (!$fn($event)) {
             $response = $this->cache->fetch($request);
             if ($response !== null) {
-                $request->getConfig()->set(self::CACHED_RESPONSE_KEY,true);
+                $request->getConfig()->set(self::CACHED_RESPONSE_KEY, true);
                 $event->intercept($response);
             }
         } else {

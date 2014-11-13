@@ -1,0 +1,25 @@
+{
+    "name": "paslandau/GuzzleApplicationCacheSubscriber",
+    "description" : "Guzzle Plugin resp. Guzzle Subscriber to selectively cache a request/response on application level.",
+    "authors": [
+        {
+            "name": "Pascal Landau",
+            "email": "kontakt@myseosolution.de",
+            "homepage": "http://www.myseosolution.de",
+            "role": "Developer"
+        }
+    ],
+	"autoload": {
+	    "psr-4": {
+	        "paslandau\\GuzzleApplicationCacheSubscriber\\": "src/"
+	    }
+	},
+    "require" : {
+        "php": "~5.5",
+        "guzzlehttp/guzzle": "~5.0.3",
+        "doctrine/cache": "~1.3.1"
+    },
+    "require-dev" : {
+        "phpunit/phpunit": "~3"
+    }
+}

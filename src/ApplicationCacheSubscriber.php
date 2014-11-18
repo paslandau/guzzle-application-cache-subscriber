@@ -83,7 +83,7 @@ class ApplicationCacheSubscriber implements SubscriberInterface
         $request = $event->getRequest();
         if ($fnReq($event)) {
             $response = $this->cache->fetch($request);
-            if ($response === null) {
+            if ($response === null && $event->getResponse() !== null) {
                 $this->cache->cache($request, $event->getResponse());
             }
         }

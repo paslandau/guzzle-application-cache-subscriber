@@ -1,3 +1,10 @@
+###0.0.4
+
+- Added Travis config
+
+###0.0.3
+
+- Responses are now excluded from cache if they are `null`
 
 ###0.0.2
 

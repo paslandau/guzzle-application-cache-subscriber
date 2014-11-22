@@ -1,4 +1,5 @@
 #GuzzleApplicationCacheSubscriber
+[![Build Status](https://travis-ci.org/paslandau/GuzzleApplicationCacheSubscriber.svg?branch=master)](https://travis-ci.org/paslandau/GuzzleApplicationCacheSubscriber)
 
 Plugin for [Guzzle 5](https://github.com/scripts/guzzle) to cache requests/responses on an application level scope. 
 This is different from the [CacheSubscriber](https://github.com/guzzle/cache-subscriber) because it doesn't adhere to HTTP caching standards

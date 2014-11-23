@@ -8,7 +8,7 @@ use GuzzleHttp\Event\EndEvent;
 use paslandau\GuzzleApplicationCacheSubscriber\ApplicationCacheSubscriber;
 use paslandau\GuzzleApplicationCacheSubscriber\CacheStorage;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once __DIR__ . '/demo-bootstrap.php';
 
 $cache = new CacheStorage(new ArrayCache());
 

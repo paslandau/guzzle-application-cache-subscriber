@@ -1,5 +1,10 @@
 ###0.0.4
 
+- Fixed demo* files autoloading
+
+
+###0.0.4
+
 - Added Travis config
 
 ###0.0.3

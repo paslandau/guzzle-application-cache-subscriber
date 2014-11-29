@@ -1,5 +1,6 @@
 {
     "name": "paslandau/GuzzleApplicationCacheSubscriber",
+    "license": "MIT",
     "description" : "Guzzle Plugin resp. Guzzle Subscriber to selectively cache a request/response on application level.",
     "authors": [
         {

@@ -90,14 +90,10 @@ The recommended way to install guzzle-application-cache-subscriber is through [C
 Next, update your project's composer.json file to include GuzzleApplicationCacheSubscriber:
 
     {
-        "repositories": [
-            {
-                "type": "git",
-                "url": "https://github.com/paslandau/guzzle-application-cache-subscriber.git"
-            }
-        ],
+        "repositories": [ { "type": "composer", "url": "http://packages.myseosolution.de/"} ],
+        "minimum-stability": "dev",
         "require": {
-             "paslandau/guzzle-application-cache-subscriber": "~0"
+             "paslandau/guzzle-application-cache-subscriber": "dev-master"
         }
     }
 

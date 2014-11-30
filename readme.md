@@ -1,5 +1,5 @@
-#GuzzleApplicationCacheSubscriber
-[![Build Status](https://travis-ci.org/paslandau/GuzzleApplicationCacheSubscriber.svg?branch=master)](https://travis-ci.org/paslandau/GuzzleApplicationCacheSubscriber)
+#guzzle-application-cache-subscriber
+[![Build Status](https://travis-ci.org/paslandau/guzzle-application-cache-subscriber.svg?branch=master)](https://travis-ci.org/paslandau/guzzle-application-cache-subscriber)
 
 Plugin for [Guzzle 5](https://github.com/scripts/guzzle) to cache requests/responses on an application level scope. 
 This is different from the [CacheSubscriber](https://github.com/guzzle/cache-subscriber) because it doesn't adhere to HTTP caching standards
@@ -83,7 +83,7 @@ See `demo*.php` files.
 
 ##Installation
 
-The recommended way to install GuzzleApplicationCacheSubscriber is through [Composer](http://getcomposer.org/).
+The recommended way to install guzzle-application-cache-subscriber is through [Composer](http://getcomposer.org/).
 
     curl -sS https://getcomposer.org/installer | php
 
@@ -93,11 +93,11 @@ Next, update your project's composer.json file to include GuzzleApplicationCache
         "repositories": [
             {
                 "type": "git",
-                "url": "https://github.com/paslandau/GuzzleApplicationCacheSubscriber.git"
+                "url": "https://github.com/paslandau/guzzle-application-cache-subscriber.git"
             }
         ],
         "require": {
-             "paslandau/GuzzleApplicationCacheSubscriber": "~0"
+             "paslandau/guzzle-application-cache-subscriber": "~0"
         }
     }
 
@@ -108,7 +108,7 @@ require 'vendor/autoload.php';
 ```
 
 ##General workflow and customization options
-The GuzzleApplicationCacheSubscriber uses a closures (`canCacheRequest`) that is evaluated in the `end` event
+The guzzle-application-cache-subscriber uses a closures (`canCacheRequest`) that is evaluated in the `end` event
 to decide wether a request/response can be stored in the cache. If it returns `true` and the response is not `null`,
 it is stored in the cache.
 

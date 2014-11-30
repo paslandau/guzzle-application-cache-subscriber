@@ -1,3 +1,7 @@
+## 0.1.0
+
+ - changed package name from GuzzleApplicationCacheSubscriber to guzzle-application-cache-subscriber
+
 ###0.0.5
 
 - Fixed demo* files autoloading

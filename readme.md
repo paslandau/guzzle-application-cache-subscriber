@@ -73,12 +73,12 @@ the cache and were intercepted in the `before` event.
 
 ###Examples
 
-See `demo*.php` files.
+See `examples` folder.
 
 ##Requirements
 
 - PHP >= 5.5
-- Guzzle >= 5.0.3
+- Guzzle >= 5.3.0
 - Doctrine/Cache >= 1.3.1
 
 ##Installation

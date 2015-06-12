@@ -23,7 +23,7 @@ $getConfigKeyValue = function (AbstractRequestEvent $e, $configKey) {
 
 $setConfigKeyValue = function (AbstractRequestEvent $e, $configKey) {
     $request = $e->getRequest();
-    return $request->getConfig()->set($configKey, true);
+    $request->getConfig()->set($configKey, true);
 };
 
 /**

@@ -5,15 +5,21 @@ use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Event\EndEvent;
 use GuzzleHttp\Event\RequestEvents;
 use GuzzleHttp\Event\SubscriberInterface;
+use GuzzleHttp\Message\ResponseInterface;
 
 class ApplicationCacheSubscriber implements SubscriberInterface
 {
-    const CACHED_RESPONSE_KEY = "has_cached_response";
+    const CACHED_RESPONSE_KEY = "has_cached_response"; // true or false
 
     /**
      * @var CacheStorage
      */
     private $cache;
+
+    /**
+     * @var string[]
+     */
+    private $uncachableHeaders;
 
     /**
      * @var callable
@@ -27,7 +33,7 @@ class ApplicationCacheSubscriber implements SubscriberInterface
 
     /**
      * @param CacheStorage $cache
-     * @param callable $canCacheRequest [optional]. Default: null. (A response will be cached if it doesn't have an exception set)
+     * @param callable $canCacheRequest [optional]. Default: null. (Every response will be cached if it is not null)
      * @param callable $mustRequestFresh [optional]. Default: null. (No request must be fresh - Each one may be answered from cache)
      */
     function __construct(CacheStorage $cache, callable $canCacheRequest = null, callable $mustRequestFresh = null)
@@ -47,6 +53,20 @@ class ApplicationCacheSubscriber implements SubscriberInterface
         $this->mustRequestFresh = $mustRequestFresh;
 
         $this->cache = $cache;
+
+        $this->uncachableHeaders = ["set-cookie","set-cookie2"];
+    }
+
+    /**
+     * Modifies the response to remove uncachable headers after fetching from cache
+     * @param ResponseInterface $resp
+     * @return ResponseInterface
+     */
+    private function pepareResponse(ResponseInterface $resp){
+        foreach($this->uncachableHeaders as $header){
+            $resp->removeHeader($header);
+        }
+        return $resp;
     }
 
     /**
@@ -68,7 +88,9 @@ class ApplicationCacheSubscriber implements SubscriberInterface
         $fn = $this->mustRequestFresh;
         if (!$fn($event)) {
             $response = $this->cache->fetch($request);
-            if ($response !== null) {
+            if ($response !== null)
+            {
+                $response = $this->pepareResponse($response);
                 $request->getConfig()->set(self::CACHED_RESPONSE_KEY, true);
                 $event->intercept($response);
             }

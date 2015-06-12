@@ -1,27 +1,35 @@
-## 0.1.1
+#todo
+
+#dev-master
+
+##0.1.2
+
+ - updated dependencies (Guzzle ^5.3; PHPUnit ~4)
+
+##0.1.1
 
  - updated repositories to local satis installation
 
-## 0.1.0
+##0.1.0
 
  - changed package name from GuzzleApplicationCacheSubscriber to guzzle-application-cache-subscriber
 
 ###0.0.5
 
-- Fixed demo* files autoloading
+- fixed demo* files autoloading
 
 ###0.0.4
 
-- Added Travis config
+- added Travis config
 
 ###0.0.3
 
-- Responses are now excluded from cache if they are `null`
+- responses are now excluded from cache if they are `null`
 
 ###0.0.2
 
-- Responses are now excluded from cache if they are `null`
+- responses are now excluded from cache if they are `null`
 
 ###0.0.1
 
-- Inital commit
+- inital commit

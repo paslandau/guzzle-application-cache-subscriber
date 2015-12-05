@@ -4,6 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Event\EndEvent;
 use GuzzleHttp\Message\Response;
+use GuzzleHttp\Stream\Stream;
 use GuzzleHttp\Subscriber\Mock;
 use paslandau\GuzzleApplicationCacheSubscriber\ApplicationCacheSubscriber;
 use paslandau\GuzzleApplicationCacheSubscriber\CacheStorage;
@@ -34,8 +35,8 @@ class ApplicationCacheSubscriberTest extends PHPUnit_Framework_TestCase {
         $client->getEmitter()->attach($sub);
 
         $url2responses = [
-            ["http://www.example.com/", new Response(200)],
-            ["http://www.example.com/", new Response(201)]
+            ["http://www.example.com/", new Response(200, [], Stream::factory("test"))],
+            ["http://www.example.com/", new Response(201), [], Stream::factory("test")]
         ];
 
         $arr = $this->setupResponseMock($client,$url2responses);
@@ -61,8 +62,8 @@ class ApplicationCacheSubscriberTest extends PHPUnit_Framework_TestCase {
         $client->getEmitter()->attach($sub);
 
         $url2responses = [
-            ["http://www.example.com/", new Response(200)],
-            ["http://www.example.com/", new Response(201)]
+            ["http://www.example.com/", new Response(200, [], Stream::factory("test"))],
+            ["http://www.example.com/", new Response(201, [], Stream::factory("test"))]
         ];
 
         $arr = $this->setupResponseMock($client,$url2responses);
@@ -88,8 +89,8 @@ class ApplicationCacheSubscriberTest extends PHPUnit_Framework_TestCase {
         $client->getEmitter()->attach($sub);
 
         $url2responses = [
-            ["http://www.example.com/", new Response(200)],
-            ["http://www.example.com/", new Response(201)]
+            ["http://www.example.com/", new Response(200, [], Stream::factory("test"))],
+            ["http://www.example.com/", new Response(201, [], Stream::factory("test"))]
         ];
 
         $arr = $this->setupResponseMock($client,$url2responses);

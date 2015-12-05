@@ -88,7 +88,7 @@ class ApplicationCacheSubscriber implements SubscriberInterface
         $fn = $this->mustRequestFresh;
         if (!$fn($event)) {
             $response = $this->cache->fetch($request);
-            if ($response !== null)
+            if ($response !== null && $response->getBody() !== null)
             {
                 $response = $this->pepareResponse($response);
                 $request->getConfig()->set(self::CACHED_RESPONSE_KEY, true);
@@ -106,6 +106,7 @@ class ApplicationCacheSubscriber implements SubscriberInterface
         if ($fnReq($event)) {
             $response = $this->cache->fetch($request);
             if ($response === null && $event->getResponse() !== null) {
+                // todo: why do we check if there is already a response in the cache and not simply override it?
                 $this->cache->cache($request, $event->getResponse());
             }
         }

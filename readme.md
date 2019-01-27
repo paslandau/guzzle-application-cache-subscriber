@@ -1,4 +1,12 @@
-#guzzle-application-cache-subscriber
+# DEPRECATED ⛔ 
+
+This repository has been deprecated as of 2019-01-27. That code was written a long time ago and has been unmaintained for several years.
+Thus, repository will now be [archived](https://github.blog/2017-11-08-archiving-repositories/).
+If you are interested in taking over ownership, feel free to [contact me](https://www.pascallandau.com/about/).
+
+---
+
+# guzzle-application-cache-subscriber
 [![Build Status](https://travis-ci.org/paslandau/guzzle-application-cache-subscriber.svg?branch=master)](https://travis-ci.org/paslandau/guzzle-application-cache-subscriber)
 
 Plugin for [Guzzle 5](https://github.com/scripts/guzzle) to cache requests/responses on an application level scope. 
@@ -6,7 +14,7 @@ This is different from the [CacheSubscriber](https://github.com/guzzle/cache-sub
 but leaves it to the developer to decide what to cache and when to request a fresh response. Although I shamelessly used the 
 [CacheStorage](https://github.com/guzzle/cache-subscriber/blob/0.1.0/src/CacheStorage.php) from said plugin :)
 
-##Description
+## Description
 
 This plugin works as a transparent proxy for requests made to the same URL using the same HTTP verb. I use it frequently when developing 
 API wrappers to avoid making multiple calls to the same API endpoint. This is particularly helpful in cases where the 
@@ -16,7 +24,7 @@ The underlying cache library is [Doctrine/Cache](https://github.com/doctrine/cac
 [FilesystemCache](https://github.com/doctrine/cache/blob/v1.3.1/lib/Doctrine/Common/Cache/FilesystemCache.php) to store responses on disk
 and have it available on the next test run.
 
-###Basic Usage
+### Basic Usage
 ```php
 
 $cache = new CacheStorage(new ArrayCache());
@@ -71,17 +79,17 @@ for ($i = 1; $i <= $num; $i++) {
 Notice how only the first request produced a debug outbut. The remaining requests have been fetched from 
 the cache and were intercepted in the `before` event.
 
-###Examples
+### Examples
 
 See `examples` folder.
 
-##Requirements
+## Requirements
 
 - PHP >= 5.5
 - Guzzle >= 5.3.0
 - Doctrine/Cache >= 1.3.1
 
-##Installation
+## Installation
 
 The recommended way to install guzzle-application-cache-subscriber is through [Composer](http://getcomposer.org/).
 
@@ -110,7 +118,7 @@ After installing, you need to require Composer's autoloader:
 require 'vendor/autoload.php';
 ```
 
-##General workflow and customization options
+## General workflow and customization options
 The guzzle-application-cache-subscriber uses a closures (`canCacheRequest`) that is evaluated in the `end` event
 to decide wether a request/response can be stored in the cache. If it returns `true` and the response is not `null`,
 it is stored in the cache.
@@ -120,7 +128,7 @@ if the request can be answered from cache or not. If it returns `true` and the c
 the configuration key `has_cached_response` (`ApplicationCacheSubscriber::CACHED_RESPONSE_KEY`) is set to `true` so that
 this info might be evaluated later on. On `false`, the cached response is deleted and Guzzle proceeds to perform the request as usual.
 
-###Setting up the validation closures
+### Setting up the validation closures
 
 ```php
 $cache = new CacheStorage(new ArrayCache());
@@ -236,11 +244,11 @@ foreach ($requests as $i => $request) {
     Trying to serve the response from cache.
     The response came from cache
     
-##Similar plugins
+## Similar plugins
 
 - [CacheSubscriber (Guzzle 4 & 5)](https://github.com/guzzle/cache-subscriber)
 - [CachePlugin (Guzzle 3)](https://github.com/guzzle/plugin-cache/)
 
-##Frequently searched questions
+## Frequently searched questions
 
 - How can I cache Guzzle requests/responses?
